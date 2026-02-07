@@ -1,17 +1,17 @@
-# Семинары курса "Компьютерное зрение", весна 2024
+# mipt-devops-2025
+Этот репозиторий содержит материалы и домашние задания по курсу "Продвинутые методы компьютерного зрения" от ЦКМ МФТИ.
 
-Содержание:
+---
+## Статус
 
-1. [Семинар 1 - Основы работы с OpenCV, фильтр Байера, сжатие/расжатие изображений](./seminars/seminar_01/Seminar_1.ipynb)
-2. [Семинар 2 - Цветовые пространства, гистограммы изображений, интегральные изображения](./seminars/seminar_02/Seminar_2.ipynb) **Домашнее задание**
-3. [Семинар 3 - Алгоритмы предварительной обработки изображений и их реализация](./seminars/seminar_03/Seminar_3.ipynb) **Домашнее задание**
-4. [Семинар 4 - Интерполяция изображений, геометрия формирования изображения и калибровка камеры](./seminars/seminar_04/Seminar_4.ipynb) **Домашнее задание**
-5. [Семинар 5 - Морфологические преобразования, бинаризация, выделение границ и контуров](./seminars/seminar_05/Seminar_5.ipynb)
-6. [Семинар 6 - Классические алгоритмы сегментации изображения и обнаружения объектов](./seminars/seminar_06/Seminar_6.ipynb) **Домашнее задание**
-7. [Семинар 7 - Детекция и сопоставление ключевых точек](./seminars/seminar_07/Seminar_7.ipynb) **Домашнее задание**
-8. [Семинар 8 - Алгоритмы анализа стереопар изображений](./seminars/seminar_08/Seminar_8.ipynb)
-9. [Семинар 9 - Методы построения оптического потока по последовательности изображений](./seminars/seminar_09/Seminar_9.ipynb) **Домашнее задание**
-10. [Семинар 10 - Текстурный анализ изображений](./seminars/seminar_10/Seminar_10.ipynb)
-11. Семинар 11 (**Домашнее задание**):
-    - [часть 1 - Нейросетевое обнаружение объектов](https://drive.google.com/file/d/1GbiqADtVULha89v49hqC-eukKoadxIRV/view?usp=sharing)
-    - [часть 2 - Трекинг](https://drive.google.com/file/d/1RKB25LGQHCmnlXfxFkOYjMbv9CPBfToF/view?usp=sharing)
+
+| Семинар № | Статус | Ссылка |
+| --- | --- | --- |
+| 1 | ![](https://img.shields.io/badge/Done-00df35) | [Seminar_1_2026.ipynb](https://github.com/KIrillPal/cv_course_2026/blob/main/seminars/seminar_01/Seminar_1_2026.ipynb) |
+| etc... | | |
+
+<!-- | 2 | Docker | ![](https://img.shields.io/badge/Done-00df35) ![](https://img.shields.io/badge/Accepted-a22ee6) | https://gitlab.com/KIrillPal/mipt-devops-2025/-/merge_requests/1 |
+| 3 | Docker | ![](https://img.shields.io/badge/Done-00df35) ![](https://img.shields.io/badge/Accepted-a22ee6) | https://gitlab.com/kondrashov-mipt-devops-2025/laboratories/lab-2/-/merge_requests/1 |
+| 4 | Docker | ![](https://img.shields.io/badge/Done-00df35) ![](https://img.shields.io/badge/Accepted-a22ee6) | https://gitlab.com/kondrashov-mipt-devops-2025/laboratories/lab-3/-/merge_requests/1 |
+| 5 | Docker | ![](https://img.shields.io/badge/Done-00df35) ![](https://img.shields.io/badge/Accepted-a22ee6) | https://gitlab.com/kondrashov-mipt-devops-2025/laboratories/lab-4/-/merge_requests/1 |
+| 6 | Docker | ![](https://img.shields.io/badge/Done-00df35) | https://gitlab.com/kondrashov-mipt-devops-2025/laboratories/lab-5/-/merge_requests/1 | 
