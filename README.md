@@ -12,7 +12,7 @@
 | 3 | ![](https://img.shields.io/badge/Skipped-B5B8B1) |  |
 | 4 | ![](https://img.shields.io/badge/Skipped-B5B8B1) |  |
 | 5 | ![](https://img.shields.io/badge/Skipped-B5B8B1) |  |
-| 6 | ![](https://img.shields.io/badge/Done-00df35) |  |
+| 6 | ![](https://img.shields.io/badge/Done-00df35) | [Seminar_6.ipynb](https://github.com/KIrillPal/cv_course_2026/blob/main/seminars/seminar_06/Seminar_6.ipynb) |
 | 7 |  |  |
 | 8 |  |  |
 | 9 |  |  |
