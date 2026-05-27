@@ -1,0 +1,32 @@
+# Запуск: из этой папки
+#   docker compose build
+#   docker compose up
+# Логи на хосте: ./runs/logs/training.log
+# Артефакты: ./runs/artifacts/ (чекпоинты, history.json, metrics.png)
+
+services:
+  train:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        TORCH_CUDA_ARCH_LIST: "${TORCH_CUDA_ARCH_LIST:-7.0;7.5;8.0;8.6;8.9;9.0+PTX}"
+    image: minkowski-seminar12:train
+    shm_size: "8gb"
+    environment:
+      NVIDIA_VISIBLE_DEVICES: "${NVIDIA_VISIBLE_DEVICES:-all}"
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility
+      LOG_DIR: /logs
+      WORKDIR: /workspace
+      MAX_STEPS: "${MAX_STEPS:-5000}"
+      VAL_FREQ: "${VAL_FREQ:-500}"
+      STAT_FREQ: "${STAT_FREQ:-50}"
+      BATCH_SIZE: "${BATCH_SIZE:-32}"
+      # Свой URL при недоступности HuggingFace / Stanford:
+      # MODELNET40_URL: "https://..."
+    volumes:
+      - ./runs/logs:/logs
+      - ./runs/artifacts:/workspace/seminar_12_runs
+      - ./runs/modelnet:/workspace/modelnet40_ply_hdf5_2048
+    # `gpus:` не поддерживается частью валидаторов / podman-compose — используем runtime nvidia
+    runtime: nvidia

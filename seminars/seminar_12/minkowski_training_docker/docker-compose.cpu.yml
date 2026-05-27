@@ -1,0 +1,20 @@
+# CPU: docker compose -f docker-compose.cpu.yml build && MAX_STEPS=500 docker compose -f docker-compose.cpu.yml up
+services:
+  train:
+    build:
+      context: .
+      dockerfile: Dockerfile.cpu
+    image: minkowski-seminar12:train-cpu
+    shm_size: "4gb"
+    environment:
+      LOG_DIR: /logs
+      WORKDIR: /workspace
+      MAX_STEPS: "${MAX_STEPS:-500}"
+      VAL_FREQ: "${VAL_FREQ:-100}"
+      STAT_FREQ: "${STAT_FREQ:-25}"
+      BATCH_SIZE: "${BATCH_SIZE:-8}"
+      SKIP_FINAL_TEST: "${SKIP_FINAL_TEST:-0}"
+    volumes:
+      - ./runs/logs:/logs
+      - ./runs/artifacts:/workspace/seminar_12_runs
+      - ./runs/modelnet:/workspace/modelnet40_ply_hdf5_2048

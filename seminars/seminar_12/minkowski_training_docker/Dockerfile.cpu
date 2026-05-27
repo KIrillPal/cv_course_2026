@@ -1,0 +1,47 @@
+# CPU-only: Ubuntu + PyTorch CPU + MinkowskiEngine (--cpu_only). Без NVIDIA/CUDA.
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV PYTHONUNBUFFERED=1
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1
+ENV PIP_NO_BUILD_ISOLATION=1
+ENV PIP_NO_CACHE_DIR=1
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3.10 python3.10-dev python3-pip \
+    build-essential git wget unzip ca-certificates curl \
+    libopenblas-dev ninja-build \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1 \
+    && update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1
+
+WORKDIR /workspace
+
+RUN python -m pip install --upgrade pip wheel packaging ninja \
+    && python -m pip install "setuptools>=59.5,<60" "numpy>=1.21,<2"
+
+RUN python -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+
+ENV MAX_JOBS=4
+
+RUN git clone --depth 1 https://github.com/NVIDIA/MinkowskiEngine.git /opt/MinkowskiEngine \
+    && cd /opt/MinkowskiEngine \
+    && python setup.py install --blas=openblas --cpu_only \
+    && cd /workspace \
+    && rm -rf /opt/MinkowskiEngine \
+    && python -m pip cache purge || true
+
+RUN python -m pip install h5py scikit-learn matplotlib \
+    && python -c "import torch, MinkowskiEngine as ME; print('torch', torch.__version__, 'cuda=', torch.cuda.is_available(), 'ME', ME.__version__)"
+
+COPY train_modelnet40.py /workspace/train_modelnet40.py
+
+ENV LOG_DIR=/logs
+ENV WORKDIR=/workspace
+ENV MAX_STEPS=5000
+ENV VAL_FREQ=500
+ENV STAT_FREQ=50
+ENV BATCH_SIZE=8
+
+CMD ["python", "-u", "/workspace/train_modelnet40.py"]

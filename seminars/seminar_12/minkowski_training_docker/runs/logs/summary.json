@@ -1,0 +1,6 @@
+{
+  "test_acc": 0.039303079416531606,
+  "best_val_acc": 0.044975688816855756,
+  "best_step": 2000,
+  "out_dir": "/workspace/seminar_12_runs"
+}
