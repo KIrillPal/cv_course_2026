@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ambassadors Skull Warp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <main class="layout">
+      <section class="panel">
+        <h2>Картина + интерактивная рамка</h2>
+        <p>Тяни углы рамки мышкой. После отпускания кнопки отрисуется новый исправленный череп.</p>
+        <canvas
+          id="sourceCanvas"
+          width="{{ image_width }}"
+          height="{{ image_height }}"
+          data-points='{{ points | tojson }}'
+          data-image-width="{{ image_width }}"
+          data-image-height="{{ image_height }}"
+          data-padding-ratio="{{ padding_ratio }}"
+        ></canvas>
+      </section>
+
+      <section class="panel result-panel">
+        <h2>Исправленный череп</h2>
+        <img id="resultImage" alt="Исправленный череп" />
+        <h3>Координаты точек (Python)</h3>
+        <pre id="pointsCode"></pre>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
